@@ -58,7 +58,7 @@ article h2 {
 }
 
 .sidenav p {
-    padding: 8px 8px 8px 32px;
+    padding: 14.5px 8px 8px 15px;
     text-decoration: none;
     font-size: 15px;
     color: #818181;
@@ -76,6 +76,13 @@ article h2 {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+#sliders {
+	position: fixed;
+	display: block;
+	float:right;
+	height:50%;
+
 }
 
 #myContainer {

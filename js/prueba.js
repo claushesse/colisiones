@@ -37,7 +37,7 @@ function setup(){
 	textFont("Helvetica");
 
 	waveform = createSelect();
-	waveform.position(110,417);
+	waveform.position(120,420);
 	var options = ['sine','triangle','square','sawtooth'];
     for (var i = 0; i < options.length; i++) {
     var option = createElement('option');
@@ -53,7 +53,7 @@ function setup(){
     //chkboxText.position(68,350);
     checkbox = createInput(0,1,0);               
     checkbox.attribute("type","checkbox");     
-    checkbox.position(105,352);
+    checkbox.position(115,352);
     checkbox.attribute('checked', null);  
     checkbox.parent("mySidenav");
  
@@ -62,28 +62,28 @@ function setup(){
     fill(45,145,237,255);
 
 	sliderDiameter = createSlider(5, 100, 25);
-	sliderDiameter.position(105, 80);
+	sliderDiameter.position(115, 80);
 	sliderDiameter.style('width', '80px');
 	sliderDiameter.parent("mySidenav");
 	//diameterText = createP("diametro");
     //diameterText.position(45, 77);
 
 	sliderFeedback = createSlider(0, 85, 30);
-	sliderFeedback.position(105, 150);
+	sliderFeedback.position(115, 150);
 	sliderFeedback.style('width', '80px');
 	sliderFeedback.parent("mySidenav");
 	//feedbackText = createP("feedback");
     //feedbackText.position(42, 148);
 
 	sliderTime = createSlider(0, 90, 80);
-	sliderTime.position(105, 220);
+	sliderTime.position(115, 220);
 	sliderTime.style('width', '80px');
 	sliderTime.parent("mySidenav");
 	//timeText = createP("tiempo");
     //timeText.position(55, 218);
 
 	sliderReverb = createSlider(0, 100, 50);
-	sliderReverb.position(105, 290);
+	sliderReverb.position(115, 290);
 	sliderReverb.style('width', '80px');
 	sliderReverb.parent("mySidenav");
 	//reverbText = createP("reverb");
