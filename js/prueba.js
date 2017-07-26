@@ -33,7 +33,7 @@ function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent("myContainer");
 	centerCanvas();
-	canvas.mouseReleased(creaPelota); 
+	//canvas.mouseReleased(creaPelota); 
 	textFont("Helvetica");
 
 	waveform = createSelect();
@@ -45,15 +45,18 @@ function setup(){
     option.html(options[i]);
     option.parent(waveform);
 	}
-    waveformText = createP("forma de onda");
-    waveformText.position(10,415);
+	waveform.parent("mySidenav");
+    //waveformText = createP("forma de onda");
+    //waveformText.position(10,415);
 
-  	chkboxText = createP("tonal");
-    chkboxText.position(68,350);
-    checkbox =  createInput(0,1,0);               
+  	//chkboxText = createP("tonal");
+    //chkboxText.position(68,350);
+    checkbox = createInput(0,1,0);               
     checkbox.attribute("type","checkbox");     
     checkbox.position(105,352);
     checkbox.attribute('checked', null);  
+    checkbox.parent("mySidenav");
+ 
 
     textAlign(CENTER);
     fill(45,145,237,255);
@@ -61,26 +64,30 @@ function setup(){
 	sliderDiameter = createSlider(5, 100, 20);
 	sliderDiameter.position(105, 80);
 	sliderDiameter.style('width', '80px');
-	diameterText = createP("diametro");
-    diameterText.position(45, 77);
+	sliderDiameter.parent("mySidenav");
+	//diameterText = createP("diametro");
+    //diameterText.position(45, 77);
 
 	sliderFeedback = createSlider(0, 85, 30);
 	sliderFeedback.position(105, 150);
 	sliderFeedback.style('width', '80px');
-	feedbackText = createP("feedback");
-    feedbackText.position(42, 148);
+	sliderFeedback.parent("mySidenav");
+	//feedbackText = createP("feedback");
+    //feedbackText.position(42, 148);
 
 	sliderTime = createSlider(0, 90, 80);
 	sliderTime.position(105, 220);
 	sliderTime.style('width', '80px');
-	timeText = createP("tiempo");
-    timeText.position(55, 218);
+	sliderTime.parent("mySidenav");
+	//timeText = createP("tiempo");
+    //timeText.position(55, 218);
 
 	sliderReverb = createSlider(0, 100, 50);
 	sliderReverb.position(105, 290);
 	sliderReverb.style('width', '80px');
-	reverbText = createP("reverb");
-    reverbText.position(59, 288);
+	sliderReverb.parent("mySidenav");
+	//reverbText = createP("reverb");
+    //reverbText.position(59, 288);
 
     env = new p5.Env();
 	env.setADSR(0.1, 0.05, 0.05, 0.2);
@@ -99,6 +106,16 @@ function setup(){
 	reverb.amp(sliderReverb.value()/100);
 	reverb.connect();
 
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("myContainer").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("myContainer").style.marginLeft = "0px";
 }
 
 function centerCanvas() {
@@ -135,6 +152,12 @@ if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 			"color":[0, 0, 0]
 		});
 }
+}
+
+function mouseReleased(){
+	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
+		creaPelota();
+	}
 }
 
 function draw(){
