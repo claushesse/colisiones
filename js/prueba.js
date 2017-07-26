@@ -61,7 +61,7 @@ function setup(){
     textAlign(CENTER);
     fill(45,145,237,255);
 
-	sliderDiameter = createSlider(5, 100, 20);
+	sliderDiameter = createSlider(5, 100, 25);
 	sliderDiameter.position(105, 80);
 	sliderDiameter.style('width', '80px');
 	sliderDiameter.parent("mySidenav");
