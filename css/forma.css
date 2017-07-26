@@ -1,0 +1,46 @@
+html, body { height:100%; }
+
+body{	
+	font: normal 100%/1.5 "Times New Roman", Times, serif;
+	color: #FFF;
+	background: rgb(240, 240, 241);
+}
+
+#myContainer{
+	margin: 0 auto;
+    width: 1600px;
+    height: 650px;
+  
+}
+
+p {
+	 font-family: Helvetica, Arial, sans-serif;
+	 font-size: 14px;
+	 color: black;
+
+}
+
+canvas { 
+	outline:1px solid #000;
+	float:left;
+}
+
+
+article {
+	width:760px;
+	margin:0 5%;
+	padding:2em 0;
+}
+
+article h1 {
+	font-size:2em;
+	font-weight:bold;
+	font-style:italic;
+	margin-bottom:0.5em;
+}
+
+article h2 {
+	font-weight:bold;
+}
+
+
