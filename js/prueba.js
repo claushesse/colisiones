@@ -30,7 +30,7 @@ var sawtooth, sawtoothText;
 
 function setup(){
 
-	canvas = createCanvas(1200, 750);
+	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent("myContainer");
 	centerCanvas();
 	canvas.mouseReleased(creaPelota); 
