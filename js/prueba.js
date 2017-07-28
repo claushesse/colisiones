@@ -19,6 +19,7 @@ var sliderTime, timeText;
 var smoothedTime = 0;
 var actTime;
 var menu;
+var boton;
 var canvas;
 var xcanvas;
 var ycanvas;
@@ -108,8 +109,6 @@ function setup(){
 	reverb.amp(sliderReverb.value()/100);
 	reverb.connect();
 
-	menu = document.getElementById("mySidenav");
-
 }
 
 function openNav() {
@@ -133,6 +132,7 @@ function windowResized() {
 }
 
 function mousePressed() {
+	if(mouseX > menu && mouseX > boton){
 	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0) {
     nuevaPelotaX = mouseX;
     nuevaPelotaY = mouseY;
@@ -141,10 +141,12 @@ function mousePressed() {
     var coordsdos = "equis" + mouseX + ",ye" + mouseY;
 	//print(coordsdos)
 	}
+	}
 }
 
 
 function creaPelota() {
+	if(mouseX > menu && mouseX > boton){
 if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 	circulos.push({
 			"x":mouseX,
@@ -156,10 +158,14 @@ if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 		});
 }
 }
+}
 
 function mouseReleased(){
+	if(mouseX > menu && mouseX > boton){
 	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 		creaPelota();
+		print(boton);
+	}
 	}
 }
 
@@ -176,6 +182,8 @@ function draw(){
 	var frecuencia = frecuencias[Math.floor(Math.random()*frecuencias.length)];
 	osc.setType(waveform.value());
 	delay.process(osc, sliderTime.value()/100, sliderFeedback.value()/100, 20000);
+	menu = document.getElementById("mySidenav").clientWidth;
+	boton = document.getElementById("boton").clientWidth;
 
 
 
@@ -187,6 +195,7 @@ function draw(){
     }
 
 	 	if (mouseIsPressed){
+	 		if(mouseX > menu && mouseX > boton){
 	 			if(nuevaPelotaX <= canvas.width || nuevaPelotaX >= 0 && nuevaPelotaY <= canvas.height || nuevaPelotaY >= 0){
      			ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
     			ellipse(mouseX, mouseY, diameter, diameter);
@@ -204,6 +213,7 @@ function draw(){
 			 if (mouseY < 0){
 			 mouseY = 0
 			}*/
+		}
 		}
 	}
 
