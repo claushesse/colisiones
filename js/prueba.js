@@ -10,6 +10,7 @@ var env;
 var delay;
 var reverb;
 var hit = false; 
+var enDiv = false;
 var nuevaPelotaX;
 var nuevaPelotaY;
 var sliderDiameter, diameterText;
@@ -17,6 +18,7 @@ var sliderFeedback, feedbackText;
 var sliderTime, timeText;
 var smoothedTime = 0;
 var actTime;
+var menu;
 var canvas;
 var xcanvas;
 var ycanvas;
@@ -106,6 +108,8 @@ function setup(){
 	reverb.amp(sliderReverb.value()/100);
 	reverb.connect();
 
+	menu = document.getElementById("mySidenav");
+
 }
 
 function openNav() {
@@ -141,7 +145,6 @@ function mousePressed() {
 
 
 function creaPelota() {
-
 if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 	circulos.push({
 			"x":mouseX,
