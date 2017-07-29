@@ -77,13 +77,6 @@ article h2 {
     font-size: 36px;
     margin-left: 50px;
 }
-#sliders {
-	position: fixed;
-	display: block;
-	float:right;
-	height:50%;
-
-}
 
 #myContainer {
     transition: margin-left .5s;

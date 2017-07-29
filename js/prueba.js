@@ -93,8 +93,8 @@ function setup(){
     //reverbText.position(59, 288);
 
     env = new p5.Env();
-	env.setADSR(0.1, 0.05, 0.05, 0.2);
-	env.setRange (0.6,0);
+	env.setADSR(0.05, 0.1, 0.05, 0.05);
+	env.setRange (0.4,0);
 
 	osc = new p5.Oscillator();
 	osc.amp(env);
@@ -132,7 +132,7 @@ function windowResized() {
 }
 
 function mousePressed() {
-	if(mouseX > menu && mouseX > boton){
+	if(mouseX > menu && mouseX >= boton + 15){
 	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0) {
     nuevaPelotaX = mouseX;
     nuevaPelotaY = mouseY;
@@ -146,7 +146,7 @@ function mousePressed() {
 
 
 function creaPelota() {
-	if(mouseX > menu && mouseX > boton){
+	if(mouseX > menu && mouseX >= boton + 15){
 if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 	circulos.push({
 			"x":mouseX,
@@ -161,7 +161,7 @@ if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 }
 
 function mouseReleased(){
-	if(mouseX > menu && mouseX > boton){
+	if(mouseX > menu && mouseX >= boton + 15){
 	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 		creaPelota();
 		print(boton);
@@ -183,7 +183,7 @@ function draw(){
 	osc.setType(waveform.value());
 	delay.process(osc, sliderTime.value()/100, sliderFeedback.value()/100, 20000);
 	menu = document.getElementById("mySidenav").clientWidth;
-	boton = document.getElementById("boton").clientWidth;
+	boton = document.getElementById("boton").offsetWidth;
 
 
 
@@ -195,7 +195,7 @@ function draw(){
     }
 
 	 	if (mouseIsPressed){
-	 		if(mouseX > menu && mouseX > boton){
+	 		if(mouseX > menu && mouseX > boton + 15){
 	 			if(nuevaPelotaX <= canvas.width || nuevaPelotaX >= 0 && nuevaPelotaY <= canvas.height || nuevaPelotaY >= 0){
      			ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
     			ellipse(mouseX, mouseY, diameter, diameter);
@@ -235,7 +235,7 @@ function draw(){
 		 checkbox.value("off");       
         }
         //osc.freq(frecuencia);
-        hit = lerp(true, false, 0.1);
+        hit = false;
         background(random(0, 255), random(0, 255),random(0, 255));
 
     	}
