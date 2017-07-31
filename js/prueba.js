@@ -94,7 +94,7 @@ function setup(){
 
     env = new p5.Env();
 	env.setADSR(0.05, 0.1, 0.05, 0.05);
-	env.setRange (0.4,0);
+	env.setRange (0.3,0);
 
 	osc = new p5.Oscillator();
 	osc.amp(env);
@@ -113,12 +113,10 @@ function setup(){
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("myContainer").style.marginLeft = "250px";
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("myContainer").style.marginLeft = "0px";
 }
 
 function centerCanvas() {
