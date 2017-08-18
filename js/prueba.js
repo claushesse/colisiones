@@ -41,7 +41,7 @@ function setup(){
 
 	waveform = createSelect();
 	waveform.position(120,420);
-	var options = ['triangle','sine','square','sawtooth'];
+	var options = ['square','sine','triangle','sawtooth'];
     for (var i = 0; i < options.length; i++) {
     var option = createElement('option');
     option.attribute('value', options[i]);
