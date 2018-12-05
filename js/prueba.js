@@ -125,6 +125,12 @@ function centerCanvas() {
   canvas.position(xcanvas, ycanvas);
 }
 
+document.querySelector('canvas').addEventListener('click', function() {
+  context.resume().then(() => {
+    console.log('Playback resumed successfully');
+  });
+});
+
 function windowResized() {
   centerCanvas();
 }
@@ -162,7 +168,7 @@ function mouseReleased(){
 	if(mouseX > menu && mouseX >= boton + 15){
 	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 		creaPelota();
-		print(boton);
+		//print(boton);
 	}
 	}
 }
@@ -198,7 +204,7 @@ function draw(){
      			ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
     			ellipse(mouseX, mouseY, diameter, diameter);
     			line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);
-				print(mouseIsPressed);
+				//print(mouseIsPressed);
 	   		/* if (mouseX >= canvas.width){
 			 mouseX = canvas.width
 			}
