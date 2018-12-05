@@ -125,11 +125,13 @@ function centerCanvas() {
   canvas.position(xcanvas, ycanvas);
 }
 
-document.querySelector("canvas").addEventListener('click', function() {
+function rehabAudio(canvas){
+canvas.addEventListener('click', function() {
   audiocontext.resume().then(() => {
     console.log('Playback resumed successfully');
   });
 });
+}
 
 function windowResized() {
   centerCanvas();
