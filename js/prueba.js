@@ -125,7 +125,7 @@ function centerCanvas() {
   canvas.position(xcanvas, ycanvas);
 }
 
-canvas.addEventListener('click', function() {
+document.querySelector("canvas").addEventListener('click', function() {
   audiocontext.resume().then(() => {
     console.log('Playback resumed successfully');
   });
