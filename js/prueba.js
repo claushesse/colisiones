@@ -38,6 +38,11 @@ function setup(){
 	//canvas.mouseReleased(creaPelota); 
 	textFont("Helvetica");
 	
+	
+	window.onload = function() {
+	  var context = new AudioContext();
+	}
+	
 	document.querySelector('body').addEventListener('click', function() {
  	 context.resume().then(() => {
    	 console.log('Playback resumed successfully');
