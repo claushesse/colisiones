@@ -30,7 +30,6 @@ var square, squareText;
 var triangle, triangleText;
 var sawtooth, sawtoothText;
 
-
 function setup(){
 
 	canvas = createCanvas(windowWidth, windowHeight);
@@ -38,6 +37,12 @@ function setup(){
 	centerCanvas();
 	//canvas.mouseReleased(creaPelota); 
 	textFont("Helvetica");
+	
+	canvas.addEventListener('click', function() {
+ 	 context.resume().then(() => {
+   	 console.log('Playback resumed successfully');
+	 });
+	});
 
 	waveform = createSelect();
 	waveform.position(120,420);
