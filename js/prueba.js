@@ -38,7 +38,7 @@ function setup(){
 	//canvas.mouseReleased(creaPelota); 
 	textFont("Helvetica");
 	
-	canvas.addEventListener('click', function() {
+	document.querySelector('body').addEventListener('click', function() {
  	 context.resume().then(() => {
    	 console.log('Playback resumed successfully');
 	 });
