@@ -29,6 +29,7 @@ var sine, sineText;
 var square, squareText;
 var triangle, triangleText;
 var sawtooth, sawtoothText;
+var context = new AudioContext();
 
 function setup(){
 
@@ -40,7 +41,7 @@ function setup(){
 	
 	
 	window.onload = function() {
-	  var context = new AudioContext();
+	  context;
 	}
 	
 	document.querySelector('body').addEventListener('click', function() {
