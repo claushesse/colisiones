@@ -282,7 +282,7 @@ sndcore = function () {
     document.addEventListener('touchend', startIOS, false);
     document.addEventListener('touchstart', startIOS, false);
   }
-};
+}();
 var master;
 master = function () {
   'use strict';
