@@ -205,6 +205,12 @@ sndcore = function () {
   // Create the Audio Context
   var audiocontext = new window.AudioContext();
   
+  document.querySelector('html').addEventListener('click', function() {
+  context.resume().then(() => {
+    console.log('Playback resumed successfully new');
+  });
+});
+  
   /**
    * <p>Returns the Audio Context for this sketch. Useful for users
    * who would like to dig deeper into the <a target='_blank' href=
