@@ -206,7 +206,7 @@ sndcore = function () {
   var audiocontext = new window.AudioContext()
  
   document.querySelector('html').addEventListener('click', function() {
-  audioContext.resume().then(() => {
+  audiocontext.resume().then(() => {
     console.log('Playback resumed successfully new');
   });
 });
