@@ -203,10 +203,12 @@ sndcore = function () {
   }(window));
   // <-- end MonkeyPatch.
   // Create the Audio Context
+  var audiocontext = new window.AudioContext()
  
-  
   document.querySelector('html').addEventListener('click', function() {
-   var audiocontext = new window.AudioContext()
+  audioContext.resume().then(() => {
+    console.log('Playback resumed successfully new');
+  });
 });
   
   /**
