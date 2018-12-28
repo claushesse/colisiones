@@ -205,11 +205,6 @@ sndcore = function () {
   // Create the Audio Context
   var audiocontext = new window.AudioContext();
   
-  document.querySelector('body').addEventListener('click', function() {
- 	 audiocontext.resume().then(() => {
-   	 console.log('Playback resumed successfully');
-	 });
-	});
   /**
    * <p>Returns the Audio Context for this sketch. Useful for users
    * who would like to dig deeper into the <a target='_blank' href=
@@ -287,7 +282,7 @@ sndcore = function () {
     document.addEventListener('touchend', startIOS, false);
     document.addEventListener('touchstart', startIOS, false);
   }
-}();
+};
 var master;
 master = function () {
   'use strict';
@@ -2937,12 +2932,6 @@ Tone_core_Tone = function () {
     throw new Error('Web Audio is not supported in this browser');
   }
   
-  document.querySelector('body').addEventListener('click', function() {
- 	 audioContext.resume().then(() => {
-   	 console.log('Playback resumed successfully');
-	 });
-	});
-  
   if (!isFunction(AudioContext.prototype.createGain)) {
     AudioContext.prototype.createGain = AudioContext.prototype.createGainNode;
   }
@@ -4071,12 +4060,6 @@ Tone_signal_Signal = function (Tone) {
     Tone.Signal._constant.start(0);
     Tone.Signal._constant.noGC();
   });
-  
-  document.querySelector('body').addEventListener('click', function() {
- 	 audioContext.resume().then(() => {
-   	 console.log('Playback resumed successfully');
-	 });
-	});
   
   return Tone.Signal;
 }(Tone_core_Tone, Tone_signal_WaveShaper, Tone_core_Type, Tone_core_Param);
