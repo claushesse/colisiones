@@ -9,34 +9,75 @@
 	<script src="js/libs/p5.collide2d.js"></script>
 	<script src="js/libs/p5.sound.js"></script>
 	<script src="js/libs/p5.dom.js"></script>
-	<script src="js/index.js"></script>
+	<script defer src="js/index.js"></script>
 </head>
 <body>
 <div id="myContainer">
 	<div id="mySidenav" class="sidenav">
-		<p href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</p>
-		<p>diametro</p>
-		<br>
-		<p>feedback</p>
-		<br>
-		<p>tiempo</p>
-		<br>
-		<p>reverb</p>
-		<br>
-		<p>attack</p>
-		<br>
-		<p>decay</p>
-		<br>
-		<p>sustain</p>
-		<br>
-		<p>release</p>
-		<br>
-		<p>tonal</p>
-		<br>
-		<p>forma de onda</p>									
-	</div>
+		<div class="closebtn" onclick="closeNav()">&times;</div>
 
-	<span id="boton" style="font-size:30px;cursor:pointer;color: black;z-index: 1;" onclick="openNav()">&#9776;</span>
+		<div id="oscilador" class="modulo">
+			<h3 class="tituloModulo">OSC</h3>
+				<div class="funcion">
+					<div id="tonal" class="tituloFuncion"><p>tonal</p></div>
+					<div id="checkbox" class="slider"></div>
+				</div>
+				<div class="funcion">
+					<div id="waveform" class="tituloFuncion"><p>waveform</p></div>
+					<div id="selectWaveform" class="slider"></div>
+				</div>
+		</div>
+
+		<div id="particle" class="modulo">
+			<h3 class="tituloModulo">PARTICLE</h3>
+			<div class="funcion">
+				<div id="diameter" class="tituloFuncion"><p>diameter</p></div>
+				<div id="diameterSlider" class="slider"></div>
+			</div>
+		</div>
+
+		<div id="delay" class="modulo">
+				<h3 class="tituloModulo">DELAY</h3>
+				<div class="funcion">
+					<div id="time" class="tituloFuncion"><p>time</p></div>
+					<div id="timeSlider" class="slider"></div>
+				</div>
+				<div class="funcion">
+					<div id="feedback" class="tituloFuncion"><p>feedback</p></div>
+					<div id="feedbackSlider" class="slider"></div>
+				</div>
+		</div>
+
+		<div id="reverb" class="modulo">
+				<h3 class="tituloModulo">REVERB</h3>
+				<div class="funcion">
+					<div id="amount" class="tituloFuncion"><p>amount</p></div>
+					<div id="reverbSlider" class="slider"></div>
+				</div>
+		</div>
+
+		<div id="envelope" class="modulo">
+				<h3 class="tituloModulo">ENVELOPE</h3>
+				<div class="funcion">
+					<div id="attack" class="tituloFuncion"><p>attack</p></div>
+					<div id="attackSlider" class="slider"></div>
+				</div>
+				<div class="funcion">
+					<div id="decay" class="tituloFuncion"><p>decay</p></div>
+					<div id="decaySlider" class="slider"></div>
+				</div>
+				<div class="funcion">
+						<div id="sustain" class="tituloFuncion"><p>sustain</p></div>
+						<div id="sustainSlider" class="slider"></div>
+					</div>
+					<div class="funcion">
+						<div id="release" class="tituloFuncion"><p>release</p></div>
+						<div id="releaseSlider" class="slider"></div>
+					</div>
+		</div>							
+	</div>
+	<div id="boton" onclick="openNav()"><span>&#9776;</span></div>
 </div>
+
 </body>
 </html>
