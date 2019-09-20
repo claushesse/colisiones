@@ -89,7 +89,7 @@ canvas {
 }
 
 .tituloFuncion{
-    width: 80px;
+    width: 75px;
     height: 40px;
     display: inline-block;
     text-align: right;
@@ -110,15 +110,17 @@ canvas {
 
 .modulo{
     padding-top: 0.5em;
-    padding-bottom: 1.8em;
+    padding-bottom: 1.6em;
     margin: 0.5em;
-    background-color: #242323;
-    border: 1px solid #555555;
+    background-color: #000000;
+    border: 0.5px solid #555555;
     border-radius: 0.5em;
 }
 
 .modulo:hover{
-    background-color: rgb(43, 42, 42);
+    /*background-color: rgb(43, 42, 42);*/
+    background-color: rgb(10, 21, 53);
+    color: black;
 }
 
 .tituloModulo{
@@ -128,7 +130,7 @@ canvas {
     text-align: left;
     margin-left: 1.1em;
     margin-bottom: 0.8em;
-    margin-top: 0.8em;
+    margin-top: 0.7em;
     font-weight: bolder;
 }
 
