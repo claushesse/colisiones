@@ -1,8 +1,5 @@
-
-//var n = 0;
 var circulos = new Array(); // []
 var frecuencias = [110, 130, 146, 164, 196, 220, 261, 293, 329, 392, 440, 523, 587, 659, 783];
-//var circulo = new Object(); // {} ----> cuando definimos propiedaddes dentro de un objeto declarado asi el valor va con dos puntos. JSON
 var osc;
 var rampTime = 1;
 var timeFromNow = 1;
@@ -13,9 +10,13 @@ var hit = false;
 var enDiv = false;
 var nuevaPelotaX;
 var nuevaPelotaY;
-var sliderDiameter, diameterText;
-var sliderFeedback, feedbackText;
-var sliderTime, timeText;
+var sliderDiameter;
+var sliderFeedback;
+var sliderTime;
+var sliderAttack;
+var sliderSustain;
+var sliderDecay;
+var sliderRelease;
 var smoothedTime = 0;
 var actTime;
 var menu;
@@ -23,12 +24,12 @@ var boton;
 var canvas;
 var xcanvas;
 var ycanvas;
-var waveform, waveformText;
-var checkbox, chkboxText;
-var sine, sineText;
-var square, squareText;
-var triangle, triangleText;
-var sawtooth, sawtoothText;
+var waveform;
+var checkbox;
+var sine;
+var square;
+var triangle;
+var sawtooth;
 var context = new AudioContext();
 
 function setup(){
@@ -36,7 +37,6 @@ function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent("myContainer");
 	centerCanvas();
-	//canvas.mouseReleased(creaPelota); 
 	textFont("Helvetica");
 	
 	
@@ -46,12 +46,12 @@ function setup(){
 	
 	document.querySelector('body').addEventListener('click', function() {
  	 context.resume().then(() => {
-   	 console.log('Playback resumed successfully');
+   	 //console.log('Playback resumed successfully');
 	 });
 	});
 
 	waveform = createSelect();
-	waveform.position(120,420);
+	waveform.position(120,650);
 	var options = ['square','sine','triangle','sawtooth'];
     for (var i = 0; i < options.length; i++) {
     var option = createElement('option');
@@ -60,14 +60,10 @@ function setup(){
     option.parent(waveform);
 	}
 	waveform.parent("mySidenav");
-    //waveformText = createP("forma de onda");
-    //waveformText.position(10,415);
 
-  	//chkboxText = createP("tonal");
-    //chkboxText.position(68,350);
     checkbox = createInput(0,1,0);               
     checkbox.attribute("type","checkbox");     
-    checkbox.position(115,352);
+    checkbox.position(115,700);
     checkbox.attribute('checked', null);  
     checkbox.parent("mySidenav");
  
@@ -79,29 +75,41 @@ function setup(){
 	sliderDiameter.position(115, 80);
 	sliderDiameter.style('width', '80px');
 	sliderDiameter.parent("mySidenav");
-	//diameterText = createP("diametro");
-    //diameterText.position(45, 77);
 
 	sliderFeedback = createSlider(0, 85, 30);
 	sliderFeedback.position(115, 150);
 	sliderFeedback.style('width', '80px');
 	sliderFeedback.parent("mySidenav");
-	//feedbackText = createP("feedback");
-    //feedbackText.position(42, 148);
 
 	sliderTime = createSlider(0, 90, 80);
 	sliderTime.position(115, 220);
 	sliderTime.style('width', '80px');
 	sliderTime.parent("mySidenav");
-	//timeText = createP("tiempo");
-    //timeText.position(55, 218);
 
 	sliderReverb = createSlider(0, 100, 50);
 	sliderReverb.position(115, 290);
 	sliderReverb.style('width', '80px');
 	sliderReverb.parent("mySidenav");
-	//reverbText = createP("reverb");
-    //reverbText.position(59, 288);
+
+	sliderAttack = createSlider(0, 1, 0, 0);
+	sliderAttack.position(115, 360);
+	sliderAttack.style('width', '80px');
+	sliderAttack.parent("mySidenav");
+
+	sliderDecay = createSlider(0, 1, 0.5, 0);
+	sliderDecay.position(115, 440);
+	sliderDecay.style('width', '80px');
+	sliderDecay.parent("mySidenav");
+
+	sliderSustain = createSlider(0, 1, 0.5, 0);
+	sliderSustain.position(115, 510);
+	sliderSustain.style('width', '80px');
+	sliderSustain.parent("mySidenav");
+
+	sliderRelease = createSlider(0, 2, 0.5, 0);
+	sliderRelease.position(115, 580);
+	sliderRelease.style('width', '80px');
+	sliderRelease.parent("mySidenav");
 
     env = new p5.Env();
 	env.setADSR(0.05, 0.1, 0.05, 0.05);
@@ -139,7 +147,7 @@ function centerCanvas() {
 function rehabAudio(canvas){
 canvas.addEventListener('click', function() {
   audiocontext.resume().then(() => {
-    console.log('Playback resumed successfully');
+    //console.log('Playback resumed successfully');
   });
 });
 }
@@ -180,21 +188,15 @@ if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 function mouseReleased(){
 	if(mouseX > menu && mouseX >= boton + 15){
 	if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
-		creaPelota();
-		//print(boton);
-	}
+		creaPelota();	}
 	}
 }
 
 function draw(){
 
-	/*actTime = sliderTime.value();
-	if (actTime != smoothedTime){
-		smoothedTime = lerp(smoothedTime, actTime, 0.5);
-		//print(smoothedTime);
-	}*/
 	reverb.amp(sliderReverb.value()/100)
 	var diameter = sliderDiameter.value();
+	env.setADSR(sliderAttack.value(), sliderDecay.value(), sliderSustain.value(), sliderRelease.value());
 	background(255, 255, 255);
 	var frecuencia = frecuencias[Math.floor(Math.random()*frecuencias.length)];
 	osc.setType(waveform.value());
@@ -217,19 +219,6 @@ function draw(){
      			ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
     			ellipse(mouseX, mouseY, diameter, diameter);
     			line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);
-				//print(mouseIsPressed);
-	   		/* if (mouseX >= canvas.width){
-			 mouseX = canvas.width
-			}
-			 if (mouseX <= 0){
-			 mouseX = 0
-			}
-			 if (mouseY > canvas.height){
-			 mouseY = canvas.height
-			}
-			 if (mouseY < 0){
-			 mouseY = 0
-			}*/
 		}
 		}
 	}
@@ -251,7 +240,6 @@ function draw(){
          osc.freq(circulos[i].y + 60	);
 		 checkbox.value("off");       
         }
-        //osc.freq(frecuencia);
         hit = false;
         background(random(0, 255), random(0, 255),random(0, 255));
 
