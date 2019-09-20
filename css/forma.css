@@ -39,7 +39,7 @@ canvas {
     /*padding: 14.5px 8px 8px 15px;*/
     text-decoration: none;
     font-size: 15px;
-    color: #b8b4b4;;
+    color: #ffffff;;
     display: block;
     transition: 0.3s;
 }
@@ -112,8 +112,8 @@ canvas {
     padding-top: 0.5em;
     padding-bottom: 1.6em;
     margin: 0.5em;
-    background-color: #000000;
-    border: 0.5px solid #555555;
+    background-color: #2d3e63;
+    /*border: 0.5px solid #555555;*/
     border-radius: 0.5em;
 }
 
