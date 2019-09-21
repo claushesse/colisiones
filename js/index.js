@@ -87,10 +87,6 @@ function setup(){
     //checkbox.position(115,700);
     checkbox.attribute('checked', null);  
     checkbox.parent(divCheckbox);
- 
-
-    textAlign(CENTER);
-    fill(45,145,237,255);
 
 	sliderDiameter = createSlider(5, 100, 25);
 	//sliderDiameter.position(115, 80);
@@ -237,8 +233,8 @@ function draw(){
 	if (circulos.length < 1) {
     fill(0);
     textAlign(CENTER);
-	textSize(28);
-	textFont("Helvetica, Arial, sans-serif");
+	textSize(40);
+	textFont("Darker Grotesque, sans-serif");
     text("hold the left mouse button and drag the mouse to start", canvas.width/2, canvas.height/2);
     }
 
