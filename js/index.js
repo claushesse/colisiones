@@ -74,19 +74,19 @@ function setup(){
 	waveform = createSelect();
 	//waveform.position(120,650);
 	var options = ['square','sine','triangle','sawtooth'];
-    for (var i = 0; i < options.length; i++) {
-    var option = createElement('option');
-    option.attribute('value', options[i]);
-    option.html(options[i]);
-    option.parent(waveform);
+	for (var i = 0; i < options.length; i++) {
+	var option = createElement('option');
+	option.attribute('value', options[i]);
+	option.html(options[i]);
+	option.parent(waveform);
 	}
 	waveform.parent(divSelectWaveform);
 
-    checkbox = createInput(0,1,0);               
-    checkbox.attribute("type","checkbox");     
-    //checkbox.position(115,700);
-    checkbox.attribute('checked', null);  
-    checkbox.parent(divCheckbox);
+	checkbox = createInput(0,1,0);               
+	checkbox.attribute("type","checkbox");     
+	//checkbox.position(115,700);
+	checkbox.attribute('checked', null);  
+	checkbox.parent(divCheckbox);
 
 	sliderDiameter = createSlider(5, 100, 25);
 	//sliderDiameter.position(115, 80);
@@ -136,7 +136,7 @@ function setup(){
 	sliderRelease.style('height', '7px');
 	sliderRelease.parent(divReleaseSlider);
 
-    env = new p5.Env();
+	env = new p5.Env();
 	env.setADSR(0.05, 0.1, 0.05, 0.05);
 	env.setRange (0.3,0);
 
@@ -152,7 +152,6 @@ function setup(){
 	reverb.process(osc, 6, 6);
 	reverb.amp(sliderReverb.value()/100);
 	reverb.connect();
-
 }
 
 var estoyFueraDelBoton = true;
@@ -167,7 +166,6 @@ function RespondMouseOver() {
 function RespondMouseOut() { 
 	estoyFueraDelBoton = true;
 } 
-
 
 function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
@@ -195,7 +193,6 @@ function mousePressed() {
 		nuevaPelotaY = mouseY;
 	}
 }
-
 
 function creaPelota() {
 	if(mouseX > menu && estoyFueraDelBoton){
@@ -231,12 +228,12 @@ function draw(){
 	delay.process(osc, sliderTime.value()/100, sliderFeedback.value()/100, 20000);
 
 	if (circulos.length < 1) {
-    fill(0);
-    textAlign(CENTER);
+	fill(0);
+	textAlign(CENTER);
 	textSize(40);
 	textFont("Darker Grotesque, sans-serif");
-    text("hold the left mouse button and drag the mouse to start", canvas.width/2, canvas.height/2);
-    }
+	text("hold the left mouse button and drag the mouse to start", canvas.width/2, canvas.height/2);
+    	}
 
 	if (mouseIsPressed){
 		if(mouseX > menu && estoyFueraDelBoton){
@@ -249,41 +246,37 @@ function draw(){
 	}
 		
 	for (var i = 0; i < circulos.length; i++) {
-        for (var j = i+1; j < circulos.length; j++){
+        	for (var j = i+1; j < circulos.length; j++){
 			hit = collideCircleCircle(circulos[i].x, circulos[i].y, circulos[i].d, circulos[j].x, circulos[j].y, circulos[j].d);
 			if (hit == true) {
-				env.play();
-				//console.log(circulos[i].y, circulos[j].y);
-				if (checkbox.elt.checked) {                           
-					osc.freq(frecuencia);
-					checkbox.value("on");
-				} else {
-					osc.freq(circulos[i].y + 60);
-					checkbox.value("off");       
-				}
-				hit = false;
-				background(random(0, 255), random(0, 255),random(0, 255));
+			env.play();
+			//console.log(circulos[i].y, circulos[j].y);
+			if (checkbox.elt.checked) {                           
+				osc.freq(frecuencia);
+				checkbox.value("on");
+			} else {
+				osc.freq(circulos[i].y + 60);
+				checkbox.value("off");       
 			}
-    	}
-
+			hit = false;
+			background(random(0, 255), random(0, 255),random(0, 255));
+			}
+    		}
 
 		fill(circulos[i].color[0], circulos[i].color[1], circulos[i].color[2])
 		ellipse(circulos[i].x, circulos[i].y, circulos[i].d, circulos[i].d)
 		circulos[i].x += circulos[i].speedX;
 		circulos[i].y += circulos[i].speedY;
 
-
 		//para que las pelotas reboten
 		if (circulos[i].x >= canvas.width || circulos[i].x <= 0)  {
 			circulos[i].speedX = -circulos[i].speedX;
 		}
 
-
 		if (circulos[i].y >= canvas.height || circulos[i].y <= 0)  {
 			circulos[i].speedY = -circulos[i].speedY;
 		}
-
-    }
+	}
 
 }
 
