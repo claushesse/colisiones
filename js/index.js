@@ -39,8 +39,8 @@ var divdecaySlider;
 var divsustainSlider;
 var divreleaseSlider;
 
-
 function setup(){
+
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent("myContainer");
 	centerCanvas();
@@ -194,27 +194,14 @@ function windowResized() {
 	centerCanvas();
 }
 
-var mousePresionado = false; 
-/*--------------inicio prueba reemplazo por evento tactil--------------*/
-function touchStarted(e) {
-	e.preventDefault();
+function mousePressed() {
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
 		nuevaPelotaX = mouseX;
 		nuevaPelotaY = mouseY;
 	}
-	mousePresionado = true; 
 }
 
-/*function mousePressed() {
-	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
-		nuevaPelotaX = mouseX;
-		nuevaPelotaY = mouseY;
-	}
-}*/
-/*--------------fin prueba reemplazo por evento tactil--------------*/
-
-/*--------------inicio prueba reemplazo por evento tactil--------------*/
-/*function mouseReleased(){
+function mouseReleased(){
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 			creaPelota();
@@ -222,29 +209,7 @@ function touchStarted(e) {
 	}
 	nuevaPelotaX = undefined;
 	nuevaPelotaY = undefined;	
-}*/
-
-function touchEnded(e){
-	e.preventDefault();
-	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
-		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
-			creaPelota();
-		}
-	}
-	nuevaPelotaX = undefined;
-	nuevaPelotaY = undefined;
-	mousePresionado = false; 	
 }
-
-var mouseActualX; 
-var mouseActualY;
-function touchMoved(event) {
-	event.preventDefault();
-	mouseActualX = event.clientX;
-	mouseActualY = event.clientY;
-}
-/*--------------fin prueba reemplazo por evento tactil--------------*/
-
 
 function creaPelota() {
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
@@ -278,15 +243,13 @@ function draw(){
 		textFont("Darker Grotesque, sans-serif");
 		text("hold the left mouse button and drag the mouse to start", canvas.width/2, canvas.height/2);
     }
-	/*if (mouseIsPressed)*/
-	if (mousePresionado){
+
+	if (mouseIsPressed){
 		if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 			if(nuevaPelotaX <= canvas.width || nuevaPelotaX >= 0 && nuevaPelotaY <= canvas.height || nuevaPelotaY >= 0){
 				ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
-				/*ellipse(mouseX, mouseY, diameter, diameter);*/
-				ellipse(mouseActualX, mouseActualY, diameter, diameter);
-				/*line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);*/
-				line(nuevaPelotaX, nuevaPelotaY, mouseActualX, mouseActualY);
+				ellipse(mouseX, mouseY, diameter, diameter);
+				line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);
 			}
 		}
 	}
