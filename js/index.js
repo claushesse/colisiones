@@ -233,6 +233,13 @@ function touchEnded(){
 	nuevaPelotaY = undefined;
 	mousePresionado = false; 	
 }
+
+var mouseActualX; 
+var mouseActualY;
+function touchMoved(event) {
+	mouseActualX = event.clientX;
+	mouseActualY = event.clientY;
+}
 /*--------------fin prueba reemplazo por evento tactil--------------*/
 
 
@@ -268,13 +275,15 @@ function draw(){
 		textFont("Darker Grotesque, sans-serif");
 		text("hold the left mouse button and drag the mouse to start", canvas.width/2, canvas.height/2);
     }
-
-	if (/*mouseIsPressed*/mousePresionado){
+	/*if (mouseIsPressed)*/
+	if (mousePresionado){
 		if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 			if(nuevaPelotaX <= canvas.width || nuevaPelotaX >= 0 && nuevaPelotaY <= canvas.height || nuevaPelotaY >= 0){
 				ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
-				ellipse(mouseX, mouseY, diameter, diameter);
-				line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);
+				/*ellipse(mouseX, mouseY, diameter, diameter);*/
+				ellipse(mouseActualX, mouseActualY, diameter, diameter);
+				/*line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);*/
+				line(nuevaPelotaX, nuevaPelotaY, mouseActualX, mouseActualY);
 			}
 		}
 	}
