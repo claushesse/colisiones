@@ -196,7 +196,8 @@ function windowResized() {
 
 var mousePresionado = false; 
 /*--------------inicio prueba reemplazo por evento tactil--------------*/
-function touchStarted() {
+function touchStarted(e) {
+	e.preventDefault();
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
 		nuevaPelotaX = mouseX;
 		nuevaPelotaY = mouseY;
@@ -223,7 +224,8 @@ function touchStarted() {
 	nuevaPelotaY = undefined;	
 }*/
 
-function touchEnded(){
+function touchEnded(e){
+	e.preventDefault();
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 			creaPelota();
@@ -237,6 +239,7 @@ function touchEnded(){
 var mouseActualX; 
 var mouseActualY;
 function touchMoved(event) {
+	event.preventDefault();
 	mouseActualX = event.clientX;
 	mouseActualY = event.clientY;
 }
