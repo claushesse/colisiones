@@ -39,6 +39,7 @@ var divdecaySlider;
 var divsustainSlider;
 var divreleaseSlider;
 
+
 function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent("myContainer");
@@ -193,14 +194,26 @@ function windowResized() {
 	centerCanvas();
 }
 
-function mousePressed() {
+var mousePresionado = false; 
+/*--------------inicio prueba reemplazo por evento tactil--------------*/
+function touchStarted() {
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
 		nuevaPelotaX = mouseX;
 		nuevaPelotaY = mouseY;
 	}
+	mousePresionado = true; 
 }
 
-function mouseReleased(){
+/*function mousePressed() {
+	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
+		nuevaPelotaX = mouseX;
+		nuevaPelotaY = mouseY;
+	}
+}*/
+/*--------------fin prueba reemplazo por evento tactil--------------*/
+
+/*--------------inicio prueba reemplazo por evento tactil--------------*/
+/*function mouseReleased(){
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 			creaPelota();
@@ -208,7 +221,20 @@ function mouseReleased(){
 	}
 	nuevaPelotaX = undefined;
 	nuevaPelotaY = undefined;	
+}*/
+
+function touchEnded(){
+	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
+		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
+			creaPelota();
+		}
+	}
+	nuevaPelotaX = undefined;
+	nuevaPelotaY = undefined;
+	mousePresionado = false; 	
 }
+/*--------------fin prueba reemplazo por evento tactil--------------*/
+
 
 function creaPelota() {
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
@@ -243,7 +269,7 @@ function draw(){
 		text("hold the left mouse button and drag the mouse to start", canvas.width/2, canvas.height/2);
     }
 
-	if (mouseIsPressed){
+	if (/*mouseIsPressed*/mousePresionado){
 		if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 			if(nuevaPelotaX <= canvas.width || nuevaPelotaX >= 0 && nuevaPelotaY <= canvas.height || nuevaPelotaY >= 0){
 				ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
