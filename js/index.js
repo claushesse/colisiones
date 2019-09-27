@@ -181,7 +181,6 @@ function RespondMouseOut1() {
 	estoyFueraDelSideNav = true;
 } 
 
-
 function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
 }
@@ -211,10 +210,10 @@ function mouseReleased(){
 	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
 			creaPelota();
-			nuevaPelotaX = undefined;
-			nuevaPelotaY = undefined;	
 		}
 	}
+	nuevaPelotaX = undefined;
+	nuevaPelotaY = undefined;	
 }
 
 function creaPelota() {
@@ -256,7 +255,7 @@ function draw(){
 			ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
 			ellipse(mouseX, mouseY, diameter, diameter);
 			line(nuevaPelotaX, nuevaPelotaY, mouseX, mouseY);
-			}	
+			}
 		}
 	}
 		
