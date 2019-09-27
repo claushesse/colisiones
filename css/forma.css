@@ -1,7 +1,8 @@
 html, body { height:100%; }
 
 body{	
-	font: normal 100%/1.5 "Times New Roman", Times, serif;
+    /*font: normal 100%/1.5 "Times New Roman", Times, serif;*/
+    font-family: 'Darker Grotesque', sans-serif;
 	color: #FFF;
 	background: rgb(240, 240, 241);
 }
@@ -35,10 +36,11 @@ canvas {
 
 
 .sidenav .modulo .funcion p {
-    font-family: Helvetica, Arial, sans-serif;
+    /*font-family: Helvetica, Arial, sans-serif;*/
+    font-family: 'Darker Grotesque', sans-serif;
     /*padding: 14.5px 8px 8px 15px;*/
     text-decoration: none;
-    font-size: 15px;
+    font-size: 1.25em;
     color: #ffffff;;
     display: block;
     transition: 0.3s;
@@ -53,7 +55,7 @@ canvas {
     position: absolute;
     top: 1%;
     left: 210px;
-    font-size: 2em;
+    font-size: 3em;
     cursor: default;
     color: #b8b4b4;
 }
@@ -77,24 +79,13 @@ canvas {
     text-align: center; 
 }
 
-#textoInicial{
-    font-size: 1.8em;
-    font-weight: bolder;
-    color: black;
-    font-family: Helvetica, Arial, sans-serif;
-    z-index: 1;
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-}
-
 .tituloFuncion{
     width: 75px;
     height: 40px;
     display: inline-block;
     text-align: right;
     margin-left: 1.5em;
-    margin-right: 0.5em;
+    margin-right: 0.3em;
 }
 
 .slider{
@@ -125,11 +116,12 @@ canvas {
 
 .tituloModulo{
     color: rgb(255, 255, 255);
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Amiko', sans-serif;
+    /*font-family: Helvetica, Arial, sans-serif;*/
     z-index: 1;
     text-align: left;
     margin-left: 1.1em;
-    margin-bottom: 0.8em;
+    margin-bottom: 1.3em;
     margin-top: 0.7em;
     font-weight: bolder;
 }
