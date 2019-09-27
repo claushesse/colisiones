@@ -7,7 +7,6 @@ var env;
 var delay;
 var reverb;
 var hit = false; 
-var enDiv = false;
 var nuevaPelotaX;
 var nuevaPelotaY;
 var sliderDiameter;
@@ -18,8 +17,6 @@ var sliderSustain;
 var sliderDecay;
 var sliderRelease;
 var smoothedTime = 0;
-var actTime;
-var menu;
 var boton; 
 var canvas;
 var xcanvas;
@@ -49,7 +46,6 @@ function setup(){
 	centerCanvas();
 	textFont("Helvetica");
 
-	menu = document.getElementById("mySidenav").clientWidth;
 	divDiameterSlider = document.getElementById("diameterSlider");
 	divCheckbox = document.getElementById("checkbox");
 	divSelectWaveform = document.getElementById("selectWaveform");;
@@ -172,15 +168,26 @@ function RespondMouseOut() {
 	estoyFueraDelBoton = true;
 } 
 
+var estoyFueraDelSideNav = true;
+boton = document.getElementById("mySidenav");
+boton.addEventListener("mouseover", RespondMouseOver1); 
+boton.addEventListener("mouseout", RespondMouseOut1); 
+
+function RespondMouseOver1() {
+	estoyFueraDelSideNav = false;
+} 
+
+function RespondMouseOut1() { 
+	estoyFueraDelSideNav = true;
+} 
+
 
 function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
-	menu = 250; 
 }
 
 function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
-	menu = 0;
 }
 
 function centerCanvas() {
@@ -194,15 +201,24 @@ function windowResized() {
 }
 
 function mousePressed() {
-	if(mouseX > menu && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
+	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton && mouseX <= canvas.width && mouseY <= canvas.height){
 		nuevaPelotaX = mouseX;
 		nuevaPelotaY = mouseY;
 	}
 }
 
+function mouseReleased(){
+	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
+		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
+			creaPelota();
+			nuevaPelotaX = undefined;
+			nuevaPelotaY = undefined;	
+		}
+	}
+}
 
 function creaPelota() {
-	if(mouseX > menu && estoyFueraDelBoton){
+	if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 		if (nuevaPelotaX != mouseX || nuevaPelotaY != mouseY){
 			circulos.push({
 				"x":mouseX,
@@ -212,14 +228,6 @@ function creaPelota() {
 				"speedY":(nuevaPelotaY - mouseY) / 30,
 				"color":[0, 0, 0]
 			});
-		}
-	}
-}
-
-function mouseReleased(){
-	if(mouseX > menu && estoyFueraDelBoton){
-		if (mouseX <= canvas.width || mouseX >= 0 && mouseY <= canvas.height || mouseY >= 0){
-			creaPelota();	
 		}
 	}
 }
@@ -243,7 +251,7 @@ function draw(){
     }
 
 	if (mouseIsPressed){
-		if(mouseX > menu && estoyFueraDelBoton){
+		if(mouseX && estoyFueraDelSideNav && estoyFueraDelBoton){
 			if(nuevaPelotaX <= canvas.width || nuevaPelotaX >= 0 && nuevaPelotaY <= canvas.height || nuevaPelotaY >= 0){
 			ellipse(nuevaPelotaX, nuevaPelotaY, 8, 8);
 			ellipse(mouseX, mouseY, diameter, diameter);
