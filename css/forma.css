@@ -13,12 +13,13 @@ body{
     height: 100%;
     transition: margin-left .5s;
     padding: 0px;
-    overscroll-behavior: none; 
 }
 
 canvas { 
-	outline:0px solid #000;
-	float:left;
+    outline:0px solid #000;
+    position: absolute;
+    top: 0;
+    left: 0;
 	z-index: -1;
 }
 
@@ -102,7 +103,7 @@ canvas {
 
 .modulo{
     padding-top: 0.5em;
-    padding-bottom: 1.6em;
+    padding-bottom: 1em;
     margin: 0.5em;
     background-color: #2d3e63;
     /*border: 0.5px solid #555555;*/
@@ -127,7 +128,30 @@ canvas {
     font-weight: bolder;
 }
 
-@media screen and (max-height: 450px) {
+.button {
+    background-color: #555555; /* Green */
+    font-family: 'Darker Grotesque', sans-serif;
+	border: none;
+	color: white;
+	padding: 5px 10px 7px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	z-index: 1;
+	font-size: 1em;
+	position: absolute;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button:hover{
+	background-color: #008CBA;
+	color: white;
+}
+
+@media only screen and (max-width: 600px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+  #boton{font-size: 3em;}
 }
+

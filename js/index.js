@@ -38,12 +38,15 @@ var divattackSlider;
 var divdecaySlider;
 var divsustainSlider;
 var divreleaseSlider;
+var container = document.getElementById("myContainer");
+var goFS = document.getElementById("goFS");
+var clear = document.getElementById("clear");
 
 function setup(){
 
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent("myContainer");
-	centerCanvas();
+	//centerCanvas();
 	textFont("Helvetica");
 
 	divDiameterSlider = document.getElementById("diameterSlider");
@@ -191,7 +194,8 @@ function centerCanvas() {
 }
 
 function windowResized() {
-	centerCanvas();
+	//centerCanvas();
+	resizeCanvas(windowWidth, windowHeight);
 }
 
 function mousePressed() {
@@ -225,6 +229,8 @@ function creaPelota() {
 		}
 	}
 }
+
+clear.addEventListener("click", function() {circulos = []}, false);
 
 function draw(){
 
